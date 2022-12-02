@@ -19,6 +19,16 @@ router.get('/', async (req, res)=>{
         res.json(todo)
     } catch (e){console.log(e)}
 })
-
-
+router.get('/delete/', async (req, res)=>{
+    try {
+        const todo=await Todo.findOneAndDelete({text: req.query.text})
+        res.json(todo)
+    } catch (e){console.log(e)}
+})
+router.get('/getidbytext/', async (req, res)=>{
+    try {
+        const todo=await Todo.findOneAndDelete({text: req.query.text})
+        res.json(todo._id)
+    } catch (e){console.log(e)}
+})
 module.exports=router;
